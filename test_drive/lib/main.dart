@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -28,10 +30,10 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Flutter Demo Home Page. V1'),
     );
   }
 }
@@ -56,7 +58,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-
+  Random random = Random();
+  List<Color> arrayOfColors = [Colors.black, Colors.red, Colors.orange, Colors.yellow, Colors.green, Colors.blue, Colors.cyan, Colors.amber, Colors.indigo, Colors.purple];
+  late int randomColorIndex = 6;
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -65,6 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
+      randomColorIndex = random.nextInt(arrayOfColors.length);
     });
   }
 
@@ -112,6 +117,14 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            Image(
+              image: NetworkImage('https://img.freepik.com/free-photo/funny-monkey-with-glasses-studio_23-2150844100.jpg?size=626&ext=jpg'),
+              width: 200,
+              height: 200,
+              color: arrayOfColors[randomColorIndex],
+              colorBlendMode: BlendMode.difference,
+              semanticLabel: 'monkeyPicture',
+              )
           ],
         ),
       ),
