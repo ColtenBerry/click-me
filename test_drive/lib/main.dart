@@ -30,10 +30,10 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lime),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page. V1'),
+      home: const MyHomePage(title: 'The Monkey Cage'),
     );
   }
 }
@@ -61,15 +61,17 @@ class _MyHomePageState extends State<MyHomePage> {
   Random random = Random();
   List<Color> arrayOfColors = [Colors.black, Colors.red, Colors.orange, Colors.yellow, Colors.green, Colors.blue, Colors.cyan, Colors.amber, Colors.indigo, Colors.purple];
   late int randomColorIndex = 6;
-  void _incrementCounter() {
+  late Color monkeyColor = Colors.white;
+  void _alterMonkey() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
-      randomColorIndex = random.nextInt(arrayOfColors.length);
+      _counter++; //increase counter
+      randomColorIndex = random.nextInt(arrayOfColors.length); //select random index
+      monkeyColor = arrayOfColors[randomColorIndex];
     });
   }
 
@@ -91,6 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
+      backgroundColor: monkeyColor,
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
@@ -111,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have pushed the button this many times:',
+              'You have altered the monkey this many times:',
             ),
             Text(
               '$_counter',
@@ -129,8 +132,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        onPressed: _alterMonkey,
+        tooltip: 'Alter the Monkey',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
