@@ -121,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             Image(
-              image: NetworkImage('https://img.freepik.com/free-photo/funny-monkey-with-glasses-studio_23-2150844100.jpg?size=626&ext=jpg'),
+              image: const NetworkImage('https://img.freepik.com/free-photo/funny-monkey-with-glasses-studio_23-2150844100.jpg?size=626&ext=jpg'),
               width: 200,
               height: 200,
               color: arrayOfColors[randomColorIndex],
@@ -136,6 +136,30 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Alter the Monkey',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+      drawer: const Drawer(
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text('data'),
+              Text('Testing Data'),
+              Text('I have a drawer!!'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text('data'),
+                  Image(
+                    image: NetworkImage('https://media.istockphoto.com/id/113494458/photo/fire-isolated-over-black-background.jpg?s=612x612&w=0&k=20&c=u6STGsSpJAyBN8kDeqnVUla4-0SnLpdaTsehFsey2p0='),
+                    width: 25,
+                    height: 25,
+                    ),
+                  Text('There was a picture!')
+                ],
+              )
+            ],
+          ),
+        )
+      ),
     );
   }
 }
