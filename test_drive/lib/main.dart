@@ -59,7 +59,18 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   Random random = Random();
-  List<Color> arrayOfColors = [Colors.black, Colors.red, Colors.orange, Colors.yellow, Colors.green, Colors.blue, Colors.cyan, Colors.amber, Colors.indigo, Colors.purple];
+  List<Color> arrayOfColors = [
+    Colors.black,
+    Colors.red,
+    Colors.orange,
+    Colors.yellow,
+    Colors.green,
+    Colors.blue,
+    Colors.cyan,
+    Colors.amber,
+    Colors.indigo,
+    Colors.purple
+  ];
   late int randomColorIndex = 6;
   late Color monkeyColor = Colors.white;
   void _alterMonkey() {
@@ -70,7 +81,8 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++; //increase counter
-      randomColorIndex = random.nextInt(arrayOfColors.length); //select random index
+      randomColorIndex =
+          random.nextInt(arrayOfColors.length); //select random index
       monkeyColor = arrayOfColors[randomColorIndex];
     });
   }
@@ -120,46 +132,51 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            //https://api.flutter.dev/flutter/widgets/Image-class.html
             Image(
-              image: const NetworkImage('https://img.freepik.com/free-photo/funny-monkey-with-glasses-studio_23-2150844100.jpg?size=626&ext=jpg'),
+              image: const NetworkImage(
+                  'https://img.freepik.com/free-photo/funny-monkey-with-glasses-studio_23-2150844100.jpg?size=626&ext=jpg'),
               width: 200,
               height: 200,
               color: arrayOfColors[randomColorIndex],
               colorBlendMode: BlendMode.difference,
               semanticLabel: 'monkeyPicture',
-              )
+            )
           ],
         ),
       ),
+      //https://api.flutter.dev/flutter/material/FloatingActionButton-class.html?gad_source=1&gclid=Cj0KCQiAvP-6BhDyARIsAJ3uv7Z42S4UaA7QTh-OytEGMemmpePNFX_rLUaRu2Ld-XXmBSQ5k4UZOV8aApcqEALw_wcB&gclsrc=aw.ds
       floatingActionButton: FloatingActionButton(
         onPressed: _alterMonkey,
         tooltip: 'Alter the Monkey',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+      //https://docs.flutter.dev/cookbook/design/drawer
       drawer: const Drawer(
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Text('data'),
-              Text('Testing Data'),
-              Text('I have a drawer!!'),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text('data'),
-                  Image(
-                    image: NetworkImage('https://media.istockphoto.com/id/113494458/photo/fire-isolated-over-black-background.jpg?s=612x612&w=0&k=20&c=u6STGsSpJAyBN8kDeqnVUla4-0SnLpdaTsehFsey2p0='),
-                    width: 25,
-                    height: 25,
-                    ),
-                  Text('There was a picture!')
-                ],
-              )
-            ],
-          ),
-        )
-      ),
+          child: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Text('data'),
+            Text('Testing Data'),
+            Text('I have a drawer!!'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text('data'),
+                //https://api.flutter.dev/flutter/widgets/Image-class.html
+                Image(
+                  image: NetworkImage(
+                      'https://media.istockphoto.com/id/113494458/photo/fire-isolated-over-black-background.jpg?s=612x612&w=0&k=20&c=u6STGsSpJAyBN8kDeqnVUla4-0SnLpdaTsehFsey2p0='),
+                  width: 25,
+                  height: 25,
+                ),
+                Text('There was a picture!')
+              ],
+            )
+          ],
+        ),
+      )),
     );
   }
 }
